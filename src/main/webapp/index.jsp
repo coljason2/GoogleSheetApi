@@ -11,5 +11,11 @@
 <body>
 	<h2>Stock Update</h2>
 	<a href="${ctx}/stockUpdate" target="blank">開始更新</a>
+	<div>
+		<iframe
+			src="https://docs.google.com/spreadsheets/d/1g2VzWZoO6JOPn4vHhGB7dkwoNsdxb7-WvLdSUPRDUqg/?usp=sharing"
+			width="1080" height="960" frameborder="0" marginheight="0"
+			marginwidth="0">Loading...</iframe>
+	</div>
 </body>
 </html>

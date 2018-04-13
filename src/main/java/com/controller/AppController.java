@@ -1,9 +1,13 @@
 package com.controller;
 
+import java.util.Timer;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.graber.updateStockTask;
 
 @Controller
 public class AppController {
@@ -15,6 +19,8 @@ public class AppController {
 	@RequestMapping(value = { "/stockUpdate" }, method = RequestMethod.GET)
 	public String stockUpdate(ModelMap model) {
 
-		return "/success";
+		Timer timer = new Timer();
+		timer.schedule(new updateStockTask(), 1000, 30000);
+		return "/index";
 	}
 }

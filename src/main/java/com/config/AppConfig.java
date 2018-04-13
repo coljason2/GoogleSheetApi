@@ -1,8 +1,6 @@
 package com.config;
 
 import org.springframework.context.annotation.*;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -14,8 +12,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		//registry.addResourceHandler("/layout/**").addResourceLocations("/layout/");
+		// registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+		// registry.addResourceHandler("/layout/**").addResourceLocations("/layout/");
 
 	}
 
