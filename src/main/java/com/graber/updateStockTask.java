@@ -22,6 +22,17 @@ public class updateStockTask extends TimerTask {
 	private static Logger logger = LoggerFactory.getLogger(updateStockTask.class);
 	private static String spreadsheetId = "1g2VzWZoO6JOPn4vHhGB7dkwoNsdxb7-WvLdSUPRDUqg";
 	private static Sheets service;
+	static {
+		try {
+			logger.info("service = {}", service);
+			if (service == null)
+				service = SheetsServiceUtil.getSheetsService();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void run() {
@@ -34,7 +45,7 @@ public class updateStockTask extends TimerTask {
 	}
 
 	private void graberData() throws IOException, GeneralSecurityException {
-		service = SheetsServiceUtil.getSheetsService();
+
 		String range = "Stock!A2:C";
 		ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 		List<List<Object>> values = response.getValues();
@@ -57,18 +68,15 @@ public class updateStockTask extends TimerTask {
 
 	@SuppressWarnings("unchecked")
 	private void WriteSheet(List<stockVo> data) {
-		Sheets sheetsService;
 		List ListData = new ArrayList<String>();
-
 		for (stockVo s : data) {
 			List RowData = Arrays.asList(s.getName(), s.getId(), s.getTargetPrice(), s.getNowPrice());
 			ListData.add(RowData);
 		}
 		ListData.add(Arrays.asList("最後更新時間：" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
 		try {
-			sheetsService = SheetsServiceUtil.getSheetsService();
 			ValueRange body = new ValueRange().setValues(ListData);
-			UpdateValuesResponse result = sheetsService.spreadsheets().values().update(spreadsheetId, "A2", body)
+			UpdateValuesResponse result = service.spreadsheets().values().update(spreadsheetId, "A2", body)
 					.setValueInputOption("RAW").execute();
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);

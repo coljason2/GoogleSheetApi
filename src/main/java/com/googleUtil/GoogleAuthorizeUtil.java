@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -29,17 +30,17 @@ public class GoogleAuthorizeUtil {
 	// set sheet read or write
 	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS);
 	private static HttpTransport HTTP_TRANSPORT;
-	private static final File DATA_STORE_DIR = new File(
-			GoogleAuthorizeUtil.class.getResource("/").getFile());
+	private static File DATA_STORE_DIR = null;
 	private static FileDataStoreFactory DATA_STORE_FACTORY;
 
 	static {
 		try {
+
+			DATA_STORE_DIR = new File(GoogleAuthorizeUtil.class.getResource("/").getPath());
 			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 			DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-		} catch (Throwable t) {
+		} catch (Exception t) {
 			t.printStackTrace();
-			System.exit(1);
 		}
 	}
 
