@@ -30,15 +30,16 @@ public class GoogleAuthorizeUtil {
 	// set sheet read or write
 	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS);
 	private static HttpTransport HTTP_TRANSPORT;
-	private static File DATA_STORE_DIR = null;
+	private static File DATA_STORE_DIR = new File("app/target/");
 	private static FileDataStoreFactory DATA_STORE_FACTORY;
 
 	static {
 		try {
 
-			DATA_STORE_DIR = new File(GoogleAuthorizeUtil.class.getResource("/").getPath());
 			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 			DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+			logger.info("DATA_STORE_FACTORY getDataDirectory = {} ", DATA_STORE_FACTORY.getDataDirectory().getPath());
+			new ReadFileUtil().creatrStoredCredentialData();
 		} catch (Exception t) {
 			t.printStackTrace();
 		}

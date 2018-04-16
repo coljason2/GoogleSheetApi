@@ -20,7 +20,7 @@ public class AppController {
 	public String stockUpdate(ModelMap model) {
 
 		Timer timer = new Timer();
-		timer.schedule(new updateStockTask(), 1000, 30000);
+		timer.schedule(new updateStockTask(), 1000, 60000);
 		return "/index";
 	}
 }
