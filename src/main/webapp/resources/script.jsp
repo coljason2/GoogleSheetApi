@@ -17,6 +17,7 @@
 	var ctx = $("#ctx").val();
 	jQuery(document).ready(function($) {
 		$("#bt-update").click(function(event) {
+			event.preventDefault();
 			$.ajax({
 				url : ctx + "update",
 				dataType : "text",
