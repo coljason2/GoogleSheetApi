@@ -35,7 +35,6 @@ public class GoogleAuthorizeUtil {
 
 	static {
 		try {
-
 			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 			DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
 			logger.info("DATA_STORE_FACTORY getDataDirectory = {} ", DATA_STORE_FACTORY.getDataDirectory().getPath());

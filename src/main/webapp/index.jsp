@@ -6,16 +6,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/resources/meta.jsp" />
 <title>Google Sheet Api</title>
 </head>
 <body>
-	<h2>Stock Update</h2>
-	<a href="${ctx}/stockUpdate" target="blank">開始更新</a>
-	<div>
-		<iframe
-			src="https://docs.google.com/spreadsheets/d/1g2VzWZoO6JOPn4vHhGB7dkwoNsdxb7-WvLdSUPRDUqg/?usp=sharing"
-			width="1080" height="960" frameborder="0" marginheight="0"
-			marginwidth="0">Loading...</iframe>
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+		<h5 class="my-0 mr-md-auto font-weight-normal">Auto Stock Update</h5>
+		<nav class="my-2 my-md-0 mr-md-3"> <a
+			class="btn btn-outline-primary" href="${ctx}/stockUpdate">開始更新</a> </nav>
 	</div>
+
+	<div class="container">
+		<div class="card-deck mb-3 text-center">
+			<iframe
+				src="https://docs.google.com/spreadsheets/d/1g2VzWZoO6JOPn4vHhGB7dkwoNsdxb7-WvLdSUPRDUqg/?usp=sharing"
+				width="1080" height="960" frameborder="0" marginheight="0"
+				marginwidth="0">Loading...</iframe>
+		</div>
+	</div>
+	<jsp:include page="/resources/script.jsp" />
 </body>
 </html>

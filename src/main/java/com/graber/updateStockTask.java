@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.TimerTask;
 
 import org.slf4j.Logger;
@@ -22,11 +23,14 @@ public class updateStockTask extends TimerTask {
 	private static Logger logger = LoggerFactory.getLogger(updateStockTask.class);
 	private static String spreadsheetId = "1g2VzWZoO6JOPn4vHhGB7dkwoNsdxb7-WvLdSUPRDUqg";
 	private static Sheets service;
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 	static {
 		try {
 			logger.info("service = {}", service);
 			if (service == null)
 				service = SheetsServiceUtil.getSheetsService();
+			sdf.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (GeneralSecurityException e) {
@@ -50,7 +54,7 @@ public class updateStockTask extends TimerTask {
 		ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 		List<List<Object>> values = response.getValues();
 		if (values == null || values.size() == 0) {
-			System.out.println("No data found.");
+			logger.info("No data found ");
 		} else {
 			List<stockVo> Stocks = new ArrayList<stockVo>();
 			for (List row : values) {
@@ -73,7 +77,7 @@ public class updateStockTask extends TimerTask {
 			List RowData = Arrays.asList(s.getName(), s.getId(), s.getTargetPrice(), s.getNowPrice());
 			ListData.add(RowData);
 		}
-		ListData.add(Arrays.asList("最後更新時間：" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
+		ListData.add(Arrays.asList("最後更新時間：" + sdf.format(new Date())));
 		try {
 			ValueRange body = new ValueRange().setValues(ListData);
 			UpdateValuesResponse result = service.spreadsheets().values().update(spreadsheetId, "A2", body)
