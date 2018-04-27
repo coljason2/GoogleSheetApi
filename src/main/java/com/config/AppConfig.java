@@ -1,6 +1,8 @@
 package com.config;
 
 import org.springframework.context.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -18,13 +20,13 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 	}
 
-	// @Controller
-	// static class FaviconController {
-	// @RequestMapping("favicon.ico")
-	// String favicon() {
-	// return "forward:/favicon.ico";
-	// }
-	// }
+	@Controller
+	static class FaviconController {
+		@RequestMapping("favicon.ico")
+		String favicon() {
+			return "forward:/favicon.ico";
+		}
+	}
 
 	/**
 	 * Configure ViewResolvers to deliver preferred views.
