@@ -16,15 +16,11 @@ public class AppController {
 	private static Timer timer = null;
 	private static Logger logger = LoggerFactory.getLogger(AppController.class);
 
-	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/home", "/index" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		return "/home";
+		return "/index";
 	}
 
-	@RequestMapping(value = { "/login", "/index" }, method = RequestMethod.GET)
-	public String login(ModelMap model) {
-		return "/login";
-	}
 	// @RequestMapping(value = { "/stockUpdate" }, method = RequestMethod.GET)
 	// public String stockUpdate(ModelMap model) {
 	// String msg = null;

@@ -8,7 +8,6 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = { "com.controller" })
-@Import({ SecurityConfiguration.class })
 public class AppConfig extends WebMvcConfigurerAdapter {
 
 	@Override
