@@ -5,9 +5,11 @@ import java.util.Timer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.graber.updateStockTask;
 
@@ -17,10 +19,29 @@ public class AppController {
 	private static Logger logger = LoggerFactory.getLogger(AppController.class);
 
 	@RequestMapping(value = { "/", "/home", "/index" }, method = RequestMethod.GET)
-	public String home(ModelMap model) {
+	public String home(Model model) {
 		return "/index";
 	}
 
+	@RequestMapping(value = { "/search" }, method = RequestMethod.GET)
+	public String search(Model model) {
+		return "/search";
+	}
+
+	@RequestMapping(value = { "/query" }, method = RequestMethod.GET)
+	public String query(@RequestParam String queryString, Model model) {
+
+		String query = queryString;
+		System.out.println(query);
+		query = query + "<br>";
+		for (int i = 0; i < 10; i++) {
+			query = query + query;
+		}
+		System.out.println(query);
+		model.addAttribute("query", query);
+
+		return "/resault";
+	}
 	// @RequestMapping(value = { "/stockUpdate" }, method = RequestMethod.GET)
 	// public String stockUpdate(ModelMap model) {
 	// String msg = null;
