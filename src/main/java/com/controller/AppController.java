@@ -29,17 +29,7 @@ public class AppController {
 	}
 
 	@RequestMapping(value = { "/query" }, method = RequestMethod.GET)
-	public String query(@RequestParam String queryString, Model model) {
-
-		String query = queryString;
-		System.out.println(query);
-		query = query + "<br>";
-		for (int i = 0; i < 10; i++) {
-			query = query + query;
-		}
-		System.out.println(query);
-		model.addAttribute("query", query);
-
+	public String query(Model model) {
 		return "/resault";
 	}
 	// @RequestMapping(value = { "/stockUpdate" }, method = RequestMethod.GET)
