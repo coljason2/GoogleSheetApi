@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +46,12 @@ public class AppController {
 	// return "/index";
 	// }
 
+	@RequestMapping(value = "/page/{index}", method = RequestMethod.GET)
+	public String page(@PathVariable("index") int index, Model model) {
+		model.addAttribute("index", "this is page " + index);
+		return "/page";
+	}
+
 	@ResponseBody
 	@RequestMapping(value = "/update")
 	public String startUpdate(ModelMap model) {
@@ -60,4 +67,5 @@ public class AppController {
 		logger.info("msg = {} ", msg);
 		return msg;
 	}
+
 }

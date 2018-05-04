@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="article">5566</div>
-	<div class="article">7788</div>
-	<div class="article">4455</div>
-	<div class="article">6666</div>
+	<div class="article">${index}</div>
+	<div class="article">${index}</div>
+	<div class="article">${index}</div>
+	<div class="article">${index}</div>
 </body>
 </html>
