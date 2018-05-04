@@ -9,6 +9,8 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/3.0.3/infinite-scroll.pkgd.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/loader-ellips.css"/>">
 <style>
 .article {
 	/* 排版用，不影響功能，*/
@@ -32,7 +34,11 @@
 
 		<!-- 捲軸狀態 -->
 		<div class="scroller-status">
-			<div class="infinite-scroll-request loader-ellips"></div>
+			<div class="loader-ellips infinite-scroll-request">
+				<span class="loader-ellips__dot"></span> <span
+					class="loader-ellips__dot"></span> <span class="loader-ellips__dot"></span>
+				<span class="loader-ellips__dot"></span>
+			</div>
 			<p class="infinite-scroll-last">開始加載</p>
 			<p class="infinite-scroll-error">沒有頁面可以讀取了</p>
 		</div>
@@ -50,8 +56,9 @@
 				//}
 			},
 			append : ".article", // 匯入物件類別
+			history : false,
 			status : ".scroller-status", // 捲軸狀態類別
-			loadingImg : "http://www.infinite-scroll.com/loading.gif"
+
 		})
 	</script>
 

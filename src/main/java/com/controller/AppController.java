@@ -10,7 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.graber.updateStockTask;
 
@@ -47,8 +46,9 @@ public class AppController {
 	// }
 
 	@RequestMapping(value = "/page/{index}", method = RequestMethod.GET)
-	public String page(@PathVariable("index") int index, Model model) {
+	public String page(@PathVariable("index") int index, Model model) throws InterruptedException {
 		model.addAttribute("index", "this is page " + index);
+		Thread.sleep(2000);
 		return "/page";
 	}
 
