@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.filter.ForceHttpToHttpsFilter;
+
+
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -28,5 +31,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		super.onStartup(servletContext);
 		servletContext.addFilter("name", new CharacterEncodingFilter("UTF-8", true)).addMappingForUrlPatterns(null,
 				false, "/*");
+		servletContext.addFilter("ForceToHttps", ForceHttpToHttpsFilter.class).addMappingForUrlPatterns(null, false,
+				"/*");
 	}
 }

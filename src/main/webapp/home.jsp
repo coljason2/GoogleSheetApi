@@ -15,7 +15,13 @@
 			href="<c:url value="/" />">Stock Upadte</a>
 		<nav class="my-2 my-md-0 mr-md-3">
 			<a id="bt-update" class="btn btn-outline-primary">開始更新</a>
+			<c:url value="/logout" var="logoutUrl" />
 		</nav>
+		<form class="my-2 my-md-0 mr-md-3" action="${logoutUrl}" method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+			<button id="submit" type="submit" class="btn btn-outline-success">登出</button>
+		</form>
 	</div>
 
 	<div class="container">

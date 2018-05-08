@@ -6,8 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class ReadFileUtil {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class ReadFileUtil {
+	private static Logger logger = LoggerFactory.getLogger(ReadFileUtil.class);
 	public void creatrStoredCredentialData() {
 		File file = null;
 		try {
@@ -15,7 +18,9 @@ public class ReadFileUtil {
 			file = new File(fileName);
 			if (!file.exists()) {
 				file.createNewFile();
+				file.canWrite();
 			}
+			logger.info("fileName = {}",file.getAbsolutePath());
 			Path path = Paths.get(file.getPath());
 			Files.copy(ReadFileUtil.class.getResourceAsStream("/StoredCredential"), path,
 					StandardCopyOption.REPLACE_EXISTING);

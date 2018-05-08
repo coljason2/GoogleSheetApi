@@ -18,9 +18,14 @@ public class AppController {
 	private static Timer timer = null;
 	private static Logger logger = LoggerFactory.getLogger(AppController.class);
 
-	@RequestMapping(value = { "/", "/home", "/index" }, method = RequestMethod.GET)
-	public String home(Model model) {
-		return "/index";
+	@RequestMapping(value = { "/home", "/" }, method = RequestMethod.GET)
+	public String home(ModelMap model) {
+		return "/home";
+	}
+
+	@RequestMapping(value = { "/login", "/index" }, method = RequestMethod.GET)
+	public String login(ModelMap model) {
+		return "/login";
 	}
 
 	@RequestMapping(value = { "/search" }, method = RequestMethod.GET)
