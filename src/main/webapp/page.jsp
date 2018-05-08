@@ -4,13 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/3.0.3/infinite-scroll.pkgd.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/loader-ellips.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/style-loader.css"/>">
 <title>Page ${index}</title>
 </head>
 <body>
@@ -18,5 +13,9 @@
 	<div class="article">${index}</div>
 	<div class="article">${index}</div>
 	<div class="article">${index}</div>
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+	<script
+		src='https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js'></script>
 </body>
 </html>
