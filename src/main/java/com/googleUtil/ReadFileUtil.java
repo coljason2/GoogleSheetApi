@@ -17,7 +17,7 @@ public class ReadFileUtil {
 				file.createNewFile();
 			}
 			Path path = Paths.get(file.getPath());
-			Files.copy(ReadFileUtil.class.getResourceAsStream("StoredCredential"), path,
+			Files.copy(ReadFileUtil.class.getResourceAsStream("/StoredCredential"), path,
 					StandardCopyOption.REPLACE_EXISTING);
 		} catch (Exception e) {
 			e.printStackTrace();
