@@ -36,12 +36,15 @@
 							</form>
 							<div id="tabs" data-tabs="tabs">
 								<p class="text-center">
+									<span style="color: green">測試帳號密碼：test</span>
 									<c:if test="${not empty sessionScope.message}">
 										<span style="color: green"><c:out
 												value="${sessionScope.message}" /></span>
 										<c:remove var="message" scope="session" />
+
 									</c:if>
 								</p>
+
 							</div>
 						</div>
 					</div>
