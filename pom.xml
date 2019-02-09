@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com</groupId>
-	<artifactId>GrabberStock</artifactId>
+	<artifactId>GoogleSheetApi</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>GrabberStock Maven Webapp</name>
+	<name>GoogleSheetApi Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<springframework.version>4.3.9.RELEASE</springframework.version>
@@ -102,7 +102,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>GrabberStock</finalName>
+		<finalName>GoogleSheetApi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -124,3 +124,4 @@
 		</plugins>
 	</build>
 </project>
+
